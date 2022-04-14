@@ -96,7 +96,7 @@ export const Authcontextprovider = (props) => {
   // if (data) {
 
   if (!data.loggedIn) {
-   navigate("/notfound");
+   console.log("false");
   }
   if (data.loggedIn) {
    setdata(data);
