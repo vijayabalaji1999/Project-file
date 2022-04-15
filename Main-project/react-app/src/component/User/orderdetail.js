@@ -9,6 +9,7 @@ export const Orderdetail = () => {
  let dates;
  const order = async () => {
   const data = await orderdetail(orderid);
+  console.log(data);
   const date = new Date(data.orderdetails[0].createdat);
   const month = date.toLocaleString("default", { month: "short" });
   dates = `${month} ${date.getDate()},${date.getFullYear()}`;

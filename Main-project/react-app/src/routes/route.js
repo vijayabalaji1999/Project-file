@@ -9,6 +9,7 @@ import { Cart } from "../component/User/cart";
 import { Checkout } from "../component/User/checkout";
 import { Ordersucess } from "../component/User/ordersuccess";
 import { Orderdetail } from "../component/User/orderdetail";
+import { Orderdetails } from "../component/Admin/orderdetail";
 import { Myorders } from "../component/User/orders";
 import { Welcome } from "../component/User/welcome";
 import { Inventory } from "../component/User/inventory";
@@ -104,7 +105,7 @@ export const Userroute = () => {
     />
     <Route
      path="/adminorderdetail/:orderid"
-     element={<Authenticatedadmin component={Orderdetail} />}
+     element={<Authenticatedadmin component={Orderdetails} />}
     />
     <Route path="*" element={<Notfound />} exact />
     <Route path="/notfound" element={<Notfound />} exact />

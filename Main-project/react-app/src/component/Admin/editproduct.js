@@ -26,6 +26,14 @@ export const Editproduct = () => {
 
  const oneproduct = async (id) => {
   const products = await getoneproductadmin(id);
+  if (!products) {
+   if (!toast.isActive(toastid.current)) {
+    toastid.current = toast.error("Product is unavailable", {
+     position: toast.POSITION.TOP_CENTER,
+     onClose: () => navigate("/admindashboard"),
+    });
+   }
+  }
   setproduct(products[0]);
   setimage(products[0].images);
  };

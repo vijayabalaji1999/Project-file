@@ -1688,3 +1688,6 @@ input[type="number"] {
 .text-rightgst2 {
  margin-left: 19.1rem;
 }
+.removable {
+ cursor: pointer;
+}

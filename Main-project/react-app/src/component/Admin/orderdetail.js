@@ -6,12 +6,26 @@ import { getorderdetail } from "../../context/Admin-context/apicallsadmin";
 import { Link } from "react-router-dom";
 import { numberoforders } from "../../context/Admin-context/apicallsadmin";
 import { Loading } from "../User/loading";
+import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
-export const Orderdetail = () => {
+export const Orderdetails = () => {
+ const navigate = useNavigate();
+ const toastid = React.useRef(null);
  let { orderid } = useParams();
  const [orders, setorders] = useState({});
  const order = async (orderid) => {
   const data = await getorderdetail(orderid);
+  if (!data) {
+   if (!toast.isActive(toastid.current)) {
+    toastid.current = toast.error("Order is unavailable", {
+     position: toast.POSITION.TOP_CENTER,
+     onClose: () => navigate("/adminorders"),
+    });
+   }
+   return;
+  }
   const number = await numberoforders(data[0].user._id);
   const date = new Date(data[0].createdat);
   const month = date.toLocaleString("default", { month: "short" });
@@ -38,6 +52,7 @@ export const Orderdetail = () => {
  return (
   <>
    <Header />
+   <ToastContainer />
    {Object.keys(orders).length === 0 && <Loading />}
    {Object.keys(orders).length !== 0 && (
     <div className="main-content">

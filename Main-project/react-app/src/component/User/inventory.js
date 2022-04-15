@@ -35,7 +35,10 @@ export const Inventory = () => {
   const messageHtml = ReactDOMServer.renderToString(
    <Reactcom order={order.orderdetails[0]}></Reactcom>
   );
-  const renders = await orderconfirmApi(messageHtml, values.user.email);
+  const renders = await orderconfirmApi(
+   messageHtml,
+   order.orderdetails[0].contact.email
+  );
  };
 
  useEffect(() => {

@@ -21,7 +21,11 @@ export const Addedproduct = (props) => {
        </td>
        <td className="text-right">
         <p href="#">
-         <u id={e.productid.sku} onClick={(e) => props.removeproduct(e)}>
+         <u
+          id={e.productid.sku}
+          className="removable"
+          onClick={(e) => props.removeproduct(e)}
+         >
           Remove
          </u>
         </p>
