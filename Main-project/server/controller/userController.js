@@ -74,7 +74,10 @@ exports.getallproduct = catchAsync(async (req, res, next) => {
 });
 
 exports.productdetail = catchAsync(async (req, res, next) => {
- const productdetail = await Product.find({ sku: req.body.id });
+ const productdetail = await Product.find({
+  sku: req.body.id,
+  status: "available",
+ });
 
  return res.status(200).send({
   status: "success",

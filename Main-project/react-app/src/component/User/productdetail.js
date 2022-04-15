@@ -5,8 +5,11 @@ import { useRef } from "react";
 import { Header } from "./header";
 import { toast, ToastContainer } from "react-toastify";
 import React from "react";
+import { Loading } from "../../component/User/loading";
+import { useNavigate } from "react-router";
 
 export const Productdetail = () => {
+ const navigate = useNavigate();
  const toastid = React.useRef(null);
 
  const [loading, setloading] = useState(false);
@@ -20,7 +23,16 @@ export const Productdetail = () => {
 
  const getdetail = async (id) => {
   const productdetail = await getproductdetail(id);
-  setproducts(productdetail.productdetail[0]);
+  if (productdetail.productdetail.length === 0) {
+   if (!toast.isActive(toastid.current)) {
+    toastid.current = toast.error("Product is unavailable", {
+     position: toast.POSITION.TOP_CENTER,
+     onClose: () => navigate("/userdashboard"),
+    });
+   }
+  } else {
+   setproducts(productdetail.productdetail[0]);
+  }
  };
 
  const handleclick = async () => {
@@ -55,6 +67,7 @@ export const Productdetail = () => {
   <>
    <Header />
    <ToastContainer />
+   {Object.keys(products).length === 0 && <Loading />}
    {Object.keys(products).length !== 0 && (
     <div className="main-content">
      <section>
