@@ -33,6 +33,7 @@ export const Authcontextprovider = (props) => {
  const [home, sethome] = useState(true);
  const [loading, setloading] = useState(true);
  const [logged, setlogged] = useState(true);
+ const [error, seterror] = useState(false);
  const navigate = useNavigate();
 
  const loginDetials = async (email, password, message) => {
@@ -96,7 +97,8 @@ export const Authcontextprovider = (props) => {
   // if (data) {
 
   if (!data.loggedIn) {
-   console.log("false");
+   setdata(undefined);
+   setloading(false);
   }
   if (data.loggedIn) {
    setdata(data);

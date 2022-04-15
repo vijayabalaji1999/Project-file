@@ -1,5 +1,4 @@
 import { RotatingLines } from "react-loader-spinner";
-
 export const Loading = () => {
  const style = {
   position: "fixed",

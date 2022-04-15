@@ -24,6 +24,7 @@ export const Header = () => {
  };
 
  const handle = () => {
+  console.log("called");
   setlogged(false);
   logoutsApi();
   navigate("/");
