@@ -272,7 +272,7 @@ export const decrement = async (sku, quantity) => {
 };
 
 export const orderconfirmApi = async (message, to) => {
- const result = await fetch(`${url}/orderconfirmationmail`, {
+ const result = await fetch(`${url}/sendingmail`, {
   method: "POST",
   headers: {
    "Content-Type": "application/json",
@@ -280,13 +280,14 @@ export const orderconfirmApi = async (message, to) => {
   body: JSON.stringify({
    message: message,
    to: to,
+   subject: "Thanks for ordering",
   }),
  });
  return result;
 };
 
 export const welcome = async (message, to) => {
- const result = await fetch(`${url}/welcome`, {
+ const result = await fetch(`${url}/sendingmail`, {
   method: "POST",
   headers: {
    "Content-Type": "application/json",
@@ -294,6 +295,7 @@ export const welcome = async (message, to) => {
   body: JSON.stringify({
    message: message,
    to: to,
+   subject: "Welcome to Wigo family",
   }),
  });
 };

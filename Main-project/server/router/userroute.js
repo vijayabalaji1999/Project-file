@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.post("/login", controller.login);
 router.post("/signup", controller.signup);
-// router.use(controller.protect);
 router.get("/getallproduct", controller.getallproduct);
 router.post("/productdetail", controller.productdetail);
 router.post("/addtocart", controller.addtocart);
@@ -23,10 +22,7 @@ router.post("/increment", controller.incrementApi);
 router.post("/status", controller.paymentstatusApi);
 router.post("/decrement", controller.inventoryDecrement);
 router.get("/logout", controller.logoutuser);
-router.post("/orderconfirmationmail", controller.orderconfirmation);
-router.post("/welcome", controller.welcome);
 router.post("/incrementinventory", controller.incrementinventory);
-
-// router.post("/createuserroute", controller.useroute);
+router.post("/sendingmail", controller.Email);
 
 module.exports = router;

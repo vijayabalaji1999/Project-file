@@ -4,13 +4,6 @@ const Cart = require("../model/cartSchema");
 const catchAsync = require("../utils/catchAsync");
 const Discount = require("../model/discountschema");
 const Orderschema = require("../model/schema");
-const Email = require("./email");
-// import { Welcome } from "../../react-app/src/component/User/welcome";
-// import ReactDOMServer from "react-dom/server";
-
-// const {
-//   Orderdetail,
-// } = require("../../react-app/src/component/User/orderdetail");
 
 exports.login = catchAsync(async (req, res, next) => {
  const { email, password, message } = req.body;
@@ -392,17 +385,17 @@ exports.logoutuser = catchAsync(async (req, res, next) => {
  });
 });
 
-exports.orderconfirmation = catchAsync(async (req, res, next) => {
- const message = req.body.message;
- const to = req.body.to;
- await new Email(message, to).sendOrder();
-});
+// exports.orderconfirmation = catchAsync(async (req, res, next) => {
+//  const message = req.body.message;
+//  const to = req.body.to;
+//  await new Email(message, to).sendOrder();
+// });
 
-exports.welcome = catchAsync(async (req, res, next) => {
- const message = req.body.message;
- const to = req.body.to;
- await new Email(message, to).sendWelcome();
-});
+// exports.welcome = catchAsync(async (req, res, next) => {
+//  const message = req.body.message;
+//  const to = req.body.to;
+//  await new Email(message, to).sendWelcome();
+// });
 
 exports.incrementinventory = catchAsync(async (req, res, next) => {
  const id = req.body.sku;
@@ -414,3 +407,29 @@ exports.incrementinventory = catchAsync(async (req, res, next) => {
  );
  res.send(dec);
 });
+
+const nodemailer = require("nodemailer");
+exports.Email = (req, res) => {
+ const messages = req.body.message;
+ const to = req.body.to;
+ const subject = req.body.subject;
+ let transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+   user: process.env.USERNAME,
+   pass: process.env.PASSWORD,
+  },
+ });
+ const message = {
+  from: `WIGO STORE <vjbavjba2405@gmail.com>`,
+  to: to,
+  subject: subject,
+  html: messages,
+ };
+
+ transporter.sendMail(message, (err, info) => {
+  if (err) {
+   console.log(err);
+  }
+ });
+};
