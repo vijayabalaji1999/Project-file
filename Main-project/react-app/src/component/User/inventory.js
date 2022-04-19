@@ -37,7 +37,7 @@ export const Inventory = () => {
   );
   const renders = await orderconfirmApi(
    messageHtml,
-   order.orderdetails[0].contact.email
+   order.orderdetails[0].shipping.shippingemail
   );
  };
 

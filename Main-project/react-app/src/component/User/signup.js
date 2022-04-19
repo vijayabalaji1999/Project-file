@@ -20,8 +20,8 @@ export const Signup = () => {
  useEffect(() => {
   setlogged(false);
   sethome(true);
-  logoutsApi();
-  setdata(undefined);
+  //   logoutsApi();
+  //   setdata(undefined);
  }, []);
 
  const controller = async (datas) => {

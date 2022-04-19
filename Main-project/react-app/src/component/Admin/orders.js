@@ -78,9 +78,7 @@ export const Orders = () => {
                 </td>
                 <td>{dateformat(e.createdat)}</td>
                 <td>{e.paymentstatus}</td>
-                <td>
-                 {e.paymentstatus === "Paid" ? "Fullfilled" : "NotFulfilled"}
-                </td>
+                <td>UnFulfilled</td>
                 <td>{e.totalquantity} items</td>
                 <td className="text-right">
                  {" "}

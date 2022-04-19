@@ -45,7 +45,9 @@ export const Editdiscount = () => {
   if (!discount[0].appliesforall) {
    specificdefault();
    setselectedprod(discount[0].product);
+
    discount[0].product.map((e1) => {
+    setproductid(e1);
     if (!allproducts.includes(e1.productid.sku)) {
      setallproducts((oldArray) => [...oldArray, e1.productid.sku]);
     }

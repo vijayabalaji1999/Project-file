@@ -22,6 +22,7 @@ export const Cart = () => {
  const [cartss, setcartss] = useState();
  const [coupon, setcoupon] = useState(false);
  const [noproduct, setnoproduct] = useState();
+ const [updates, setupdates] = useState({});
 
  const userid = values.user._id;
  const promo = useRef();
@@ -70,8 +71,17 @@ export const Cart = () => {
   }
  };
 
+ const success = (message) => {
+  if (!toast.isActive(toastid.current)) {
+   toastid.current = toast.success(message, {
+    position: toast.POSITION.TOP_CENTER,
+   });
+  }
+ };
+
  const handleChange = (qua, id, cart) => {
   updatedproduct = handleChangehelp(qua, id, cart);
+  setupdates(updatedproduct);
  };
 
  const deletediscount = async () => {
@@ -81,7 +91,7 @@ export const Cart = () => {
  };
 
  const singleupdate = async (userid, productid) => {
-  let carts = updatedproduct ? updatedproduct : cart;
+  let carts = Object.keys(updates).length !== 0 ? updates : cart;
   const finded = carts.filter((e) => {
    if (e.productid._id === productid) {
     return true;
@@ -97,14 +107,14 @@ export const Cart = () => {
 
   if (data.code) {
    error(data.status);
+  } else {
+   success("Product updated");
   }
-  if (!data.code) {
-   getcart(userid);
-  }
+  getcart(userid);
  };
 
  const updateallquantity = async () => {
-  let carts = updatedproduct ? updatedproduct : cart;
+  let carts = Object.keys(updates).length !== 0 ? updates : cart;
   let code;
   let status;
 
@@ -125,15 +135,18 @@ export const Cart = () => {
 
   if (code) {
    error(status);
+  } else {
+   success("Product updated");
   }
-  if (!code) {
-   getcart(userid);
-  }
+  getcart(userid);
   return data;
  };
 
  const deleteitem = async (userid, productid) => {
   const data = await deleteitemcart(userid, productid);
+  if (Object.keys(updates).length !== 0) {
+   setupdates(updates.filter((e) => e.productid._id !== productid));
+  }
   getcart(userid);
  };
 
@@ -211,7 +224,16 @@ export const Cart = () => {
             </span>
            </p>
            <div className="cart-subtotal evenly-align cart__total">
+            <span className="cart-subtotal__title">Discount</span>
+            <strong>
+             <span className="cart-subtotal__price">
+              ${cart.discounttotalprice ? `${cart.discounttotal}USD` : "0"}
+             </span>
+            </strong>
+           </div>
+           <div className="cart-subtotal evenly-align cart__total">
             <span className="cart-subtotal__title">Subtotal</span>
+            {/* discounttotal */}
             <strong>
              <span className="cart-subtotal__price">
               $

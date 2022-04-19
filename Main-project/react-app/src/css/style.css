@@ -1691,3 +1691,10 @@ input[type="number"] {
 .removable {
  cursor: pointer;
 }
+.btns {
+ margin-left: 11rem;
+ margin-top: 2rem;
+}
+.disable {
+ background-color: #f6f6f6;
+}

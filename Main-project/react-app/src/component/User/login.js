@@ -18,8 +18,8 @@ export const Login = () => {
  useEffect(() => {
   setlogged(false);
   sethome(false);
-  logoutsApi();
-  setdata(undefined);
+//   logoutsApi();
+//   setdata(undefined);
  }, []);
 
  const controller = async (datas) => {

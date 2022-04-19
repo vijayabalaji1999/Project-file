@@ -2,22 +2,15 @@ import { useEffect } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 
 export function FieldArray() {
- // form validation rules
-
- // functions to build form returned by useForm() and useFieldArray() hooks
  const { register, control, handleSubmit, reset, formState, watch } = useForm();
  const { errors } = formState;
  const { fields, append, remove } = useFieldArray({ name: "tickets", control });
-
- // watch to enable re-render when ticket number is changed
  const numberOfTickets = watch("numberOfTickets");
 
  useEffect(() => {
-  // update field array when ticket number changed
   const newVal = parseInt(numberOfTickets || 0);
   const oldVal = fields.length;
   if (newVal > oldVal) {
-   // append tickets to field array
    for (let i = oldVal; i < newVal; i++) {
     append({ name: "", email: "" });
    }

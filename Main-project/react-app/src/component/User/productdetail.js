@@ -11,7 +11,6 @@ import { useNavigate } from "react-router";
 export const Productdetail = () => {
  const navigate = useNavigate();
  const toastid = React.useRef(null);
-
  const [loading, setloading] = useState(false);
  const { values } = useContext(Usercontext);
  const { addtocart } = useContext(Usercontext);

@@ -19,8 +19,6 @@ export const payment = async (orderno, product, stripe) => {
   obj.quantity = e.quantity;
 
   item.push(obj);
-
-  console.log(item);
  });
 
  const session = await stripesessionApi(item, orderno);

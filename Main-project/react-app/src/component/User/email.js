@@ -687,7 +687,7 @@ export const Reactcom = ({ order }) => {
                       }}
                      >
                       <span style={{ fontSize: "16px" }}>
-                       ending with 1234 —{" "}
+                       ending with 4242 —{" "}
                        <strong
                         style={{
                          fontSize: "16px",
@@ -749,14 +749,14 @@ export const Reactcom = ({ order }) => {
                   If you have any questions, reply to this email or contact us
                   at{" "}
                   <a
-                   href="mailto:accounts@codem.com"
+                   href="mailto:vjbavjba2405@gmail.com"
                    style={{
                     fontSize: "14px",
                     textDecoration: "none",
                     color: "#000000",
                    }}
                   >
-                   accounts@codem.com
+                   vjbavjba2405@gmail.com
                   </a>
                  </p>
                 </td>

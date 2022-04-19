@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 // import Axios from "axios";
 
 const url = "http://localhost:3001/api/user";

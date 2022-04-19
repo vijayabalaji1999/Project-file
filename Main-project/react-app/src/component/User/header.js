@@ -84,9 +84,15 @@ export const Header = () => {
 
          {!logged && !home && <Link to="/signup">Register</Link>}
          {logged && (
-          <p className="logout" onClick={handle}>
-           Log out
-          </p>
+          <>
+           {values.user.role === "user" && (
+            <Link to="/usermyorders">My orders</Link>
+           )}
+
+           <p className="logout" onClick={handle}>
+            Log out
+           </p>
+          </>
          )}
         </div>
        </span>

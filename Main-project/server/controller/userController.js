@@ -25,6 +25,7 @@ exports.login = catchAsync(async (req, res, next) => {
  }
 
  const correct = await user.correctPassword(password, user.password);
+
  req.session.user = user;
 
  if (!correct) {
@@ -114,10 +115,6 @@ exports.addtocart = catchAsync(async (req, res, next) => {
   let hasbutnotvalid = false;
   let noproduct = false;
   const findProduct = await Cart.findOne({ user: req.body.user });
-  // if (findProduct.discount !== discount) {
-  //   findProduct.discount = discount;
-  // }
-
   const updatedproduct = findProduct.product.map((each) => {
    if (each.productid.id === product) {
     {

@@ -227,11 +227,6 @@ export const Editproduct = () => {
               <label htmlFor="description">Product Image</label>
               <div className="mt-10">
                <div className="tooltip">
-                <span className="tooltiptext">
-                 {Object.keys(image).length !== 0
-                  ? "Click image to remove"
-                  : ""}
-                </span>
                 {Object.keys(image).length === 0 ? (
                  <label htmlFor="image-file" className="drop-zone">
                   <input
@@ -247,10 +242,16 @@ export const Editproduct = () => {
                  <img
                   src={`/images/${image}`}
                   alt="images"
-                  onClick={() => setimage({})}
                   className="drop-zone"
                  />
                 )}
+                <button
+                 href="admin-collection.html"
+                 className="button button--hollow justify-end inline-block btns"
+                 onClick={() => setimage({})}
+                >
+                 Remove Image
+                </button>
                </div>
               </div>
              </div>

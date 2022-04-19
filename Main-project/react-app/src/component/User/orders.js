@@ -3,6 +3,7 @@ import { Usercontext } from "../../context/User-context/Authcontext";
 import { allorders } from "../../context/User-context/apicalls";
 import { Link } from "react-router-dom";
 import { Header } from "./header";
+import { Loading } from "./loading";
 
 export const Myorders = () => {
  const { values } = useContext(Usercontext);
@@ -28,6 +29,7 @@ export const Myorders = () => {
    <Header />
    <div className="main-content">
     <section>
+     {Object.keys(order).length === 0 && <Loading />}
      {Object.keys(order).length !== 0 && (
       <div className="container">
        <div className="checkout-template page-content">
@@ -58,7 +60,7 @@ export const Myorders = () => {
                 </td>
                 <td>{dateformat(e.createdat)}</td>
                 <td>{e.paymentstatus}</td>
-                <td>{e.fulfilmentstatus}</td>
+                <td>UnFulfilled</td>
                 <td className="text-right">
                  $
                  {e.discountcode !== ""

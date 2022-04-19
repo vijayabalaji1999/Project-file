@@ -9,7 +9,6 @@ export const Orderdetail = () => {
  let dates;
  const order = async () => {
   const data = await orderdetail(orderid);
-  console.log(data);
   const date = new Date(data.orderdetails[0].createdat);
   const month = date.toLocaleString("default", { month: "short" });
   dates = `${month} ${date.getDate()},${date.getFullYear()}`;
@@ -47,12 +46,7 @@ export const Orderdetail = () => {
            <p>{datas.shipping.shippingaddress}</p>
            <p>Pincode: {datas.shipping.shippingpostal}</p>
            <p className="mt-20">
-            <strong>
-             Fulfillment Status:{" "}
-             {datas.paymentstatus === "pending"
-              ? "NotFullfilled"
-              : "fullfilled"}
-            </strong>
+            <strong>Fulfillment Status: UnFulfilled</strong>
            </p>
           </div>
          </div>

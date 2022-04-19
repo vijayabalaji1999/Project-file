@@ -63,7 +63,7 @@ const Ordersschema = new mongoose.Schema({
  },
  fulfilmentstatus: {
   type: String,
-  default: "Fullfilled",
+  default: "UnFulfilled",
  },
 
  contact: {

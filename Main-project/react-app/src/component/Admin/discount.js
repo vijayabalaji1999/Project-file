@@ -127,7 +127,10 @@ export const Discount = () => {
             <tbody>
              {discount.map((e, i) => {
               return (
-               <tr key={e.discountcode}>
+               <tr
+                className={e.status === "enable" ? "" : "disable"}
+                key={e.discountcode}
+               >
                 <td>
                  <input
                   type="checkbox"
