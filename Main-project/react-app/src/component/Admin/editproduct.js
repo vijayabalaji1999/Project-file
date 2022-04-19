@@ -30,6 +30,7 @@ export const Editproduct = () => {
    if (!toast.isActive(toastid.current)) {
     toastid.current = toast.error("Product is unavailable", {
      position: toast.POSITION.TOP_CENTER,
+     autoClose: 500,
      onClose: () => navigate("/admindashboard"),
     });
    }
@@ -56,6 +57,7 @@ export const Editproduct = () => {
    if (!toast.isActive(toastid.current)) {
     toastid.current = toast.info("Please add a product image", {
      position: toast.POSITION.TOP_CENTER,
+     autoClose: 500,
     });
    }
   } else {
@@ -67,6 +69,7 @@ export const Editproduct = () => {
    if (!toast.isActive(toastid.current)) {
     toastid.current = toast.success("Product updated", {
      position: toast.POSITION.TOP_CENTER,
+     autoClose: 500,
      onClose: () => navigate("/admindashboard"),
     });
    }
@@ -74,6 +77,7 @@ export const Editproduct = () => {
    if (!toast.isActive(toastid.current)) {
     toastid.current = toast.error("SKU already exist", {
      position: toast.POSITION.TOP_CENTER,
+     autoClose: 500,
     });
    }
   }

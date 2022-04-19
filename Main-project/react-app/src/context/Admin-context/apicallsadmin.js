@@ -63,7 +63,6 @@ export const getimages = async (file1) => {
  let formData1 = new FormData();
 
  formData1.append("images", file1);
- // // formData.append("File", file);
 
  const result = await axios.post(`${url}/editproduct`, formData1, {
   headers: {

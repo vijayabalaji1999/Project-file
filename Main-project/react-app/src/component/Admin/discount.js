@@ -58,6 +58,7 @@ export const Discount = () => {
    if (!toast.isActive(toastid.current)) {
     toastid.current = toast.info("Please select a Discount", {
      position: toast.POSITION.TOP_CENTER,
+     autoClose: 500,
     });
    }
   }

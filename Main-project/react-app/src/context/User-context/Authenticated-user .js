@@ -9,6 +9,8 @@ export const Authenticateduser = ({ component: ReactComponent }) => {
  const { loading } = useContext(Usercontext);
  const { setlogged } = useContext(Usercontext);
 
+ console.log(values, loading);
+
  if (loading) {
   return <Loading />;
  } else if (values && values.user.role === "user") {

@@ -73,13 +73,11 @@ export const Checkout = () => {
   if (allcart.productadded.length === 0) {
    const data = await setdiscount(values.user._id);
    if (!toast.isActive(toastid.current)) {
-    toastid.current = toast.error(
-     "No product are valid for payment Please go to cart and change ",
-     {
-      position: toast.POSITION.TOP_CENTER,
-      onClose: () => navigate("/usercart"),
-     }
-    );
+    toastid.current = toast.error("No Products in Cart", {
+     position: toast.POSITION.TOP_CENTER,
+     autoClose: 500,
+     onClose: () => navigate("/usercart"),
+    });
    }
    return console.log("discount deleted redirect here");
   }
@@ -172,6 +170,7 @@ export const Checkout = () => {
   if (!toast.isActive(toastid.current)) {
    toastid.current = toast.error(message, {
     position: toast.POSITION.TOP_CENTER,
+    autoClose: 500,
    });
   }
  };

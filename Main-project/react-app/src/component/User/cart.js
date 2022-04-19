@@ -67,6 +67,7 @@ export const Cart = () => {
   if (!toast.isActive(toastid.current)) {
    toastid.current = toast.error(message, {
     position: toast.POSITION.TOP_CENTER,
+    autoClose: 500,
    });
   }
  };
@@ -75,6 +76,7 @@ export const Cart = () => {
   if (!toast.isActive(toastid.current)) {
    toastid.current = toast.success(message, {
     position: toast.POSITION.TOP_CENTER,
+    autoClose: 500,
    });
   }
  };
@@ -223,17 +225,19 @@ export const Cart = () => {
              <span>${cart.totalprice} USD</span>
             </span>
            </p>
-           <div className="cart-subtotal evenly-align cart__total">
-            <span className="cart-subtotal__title">Discount</span>
-            <strong>
-             <span className="cart-subtotal__price">
-              ${cart.discounttotalprice ? `${cart.discounttotal}USD` : "0"}
-             </span>
-            </strong>
-           </div>
+           {cart.discounttotalprice && (
+            <div className="cart-subtotal evenly-align cart__total">
+             <span className="cart-subtotal__title">Discount</span>
+             <strong>
+              <span className="cart-subtotal__price">
+               ${cart.discounttotal}USD
+              </span>
+             </strong>
+            </div>
+           )}
            <div className="cart-subtotal evenly-align cart__total">
             <span className="cart-subtotal__title">Subtotal</span>
-            {/* discounttotal */}
+
             <strong>
              <span className="cart-subtotal__price">
               $

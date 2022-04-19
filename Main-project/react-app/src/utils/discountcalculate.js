@@ -4,7 +4,7 @@ import { nodiscount } from "../helpers/helper";
 
 const url = "http://localhost:3001/api/user";
 
-export const discountcal = async (code, card, userid) => {
+export const discountcal = async (code, card) => {
  const data = await getdiscount(code);
 
  if (data.code) {
@@ -109,7 +109,7 @@ export const discountcal = async (code, card, userid) => {
   if (!coupon) {
    card.product.error =
     "No product are valid for this coupon please try  another coupon";
-   const data = await setdiscount(userid);
+   const data = await setdiscount(card.user._id);
    return card.product;
   }
 

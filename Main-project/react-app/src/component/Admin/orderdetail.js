@@ -21,6 +21,7 @@ export const Orderdetails = () => {
    if (!toast.isActive(toastid.current)) {
     toastid.current = toast.error("Order is unavailable", {
      position: toast.POSITION.TOP_CENTER,
+     autoClose: 500,
      onClose: () => navigate("/adminorders"),
     });
    }

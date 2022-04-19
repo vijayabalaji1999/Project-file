@@ -6,6 +6,7 @@ import {
  incrementinventory,
 } from "../context/User-context/apicalls";
 const url = "http://localhost:3001/api/user";
+
 const toastList = new Set();
 const MAX_TOAST = 1;
 
@@ -74,6 +75,7 @@ export const checkouthandlercheck = async (products, userid) => {
     {
      position: toast.POSITION.TOP_CENTER,
      onClose: () => toastList.delete(id),
+     autoClose: 500,
     }
    );
    toastList.add(id);

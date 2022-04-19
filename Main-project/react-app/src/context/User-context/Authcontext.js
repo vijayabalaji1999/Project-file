@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { Welcome } from "../../component/User/welcome";
 // import { orderconfirmApi } from "../../context/User-context/discountcalculate";
 import ReactDOMServer from "react-dom/server";
-import { welcome } from "./apicalls";
+import { logoutsApi, welcome } from "./apicalls";
 import {
  addtocartApi,
  deleteitemcartApi,
@@ -20,9 +20,11 @@ export const Usercontext = React.createContext({
  login: () => {},
  signup: () => {},
  loading: undefined,
+ setloading: undefined,
  getallproduct: () => {},
  logged: undefined,
  addtocart: () => {},
+ logout: () => {},
  getallcart: () => {},
  deleteitemcart: () => {},
  setdata: undefined,
@@ -39,6 +41,7 @@ export const Authcontextprovider = (props) => {
  const loginDetials = async (email, password, message) => {
   const data = await loginAPI(email, password);
   if (!data.code) {
+   console.log("data.code");
    setdata(data);
    if (data.user.role === "user") {
     navigate("/userdashboard");
@@ -54,6 +57,11 @@ export const Authcontextprovider = (props) => {
   if (data.code) return data;
  };
 
+ const logout = async () => {
+  await logoutsApi();
+  setdata(undefined);
+ };
+
  const sendWelocme = async (email) => {
   const messageHtml = ReactDOMServer.renderToString(
    <Welcome name={email}></Welcome>
@@ -65,6 +73,7 @@ export const Authcontextprovider = (props) => {
   // setloading(true);
   const data = await signupAPI(email, password, passwordConfirm);
   if (!data.code) {
+   console.log("data.code");
    setdata(data);
    if (data.user.role === "user") {
     navigate("/userdashboard");
@@ -101,6 +110,7 @@ export const Authcontextprovider = (props) => {
    setloading(false);
   }
   if (data.loggedIn) {
+   console.log("data.loggedIn");
    setdata(data);
    setloading(false);
   }
@@ -167,6 +177,8 @@ export const Authcontextprovider = (props) => {
     setdata: setdata,
     sethome: sethome,
     home: home,
+    setloading: setloading,
+    logout: logout,
    }}
   >
    {props.children}

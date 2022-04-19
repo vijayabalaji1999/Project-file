@@ -8,10 +8,11 @@ export const Header = () => {
  const navigate = useNavigate();
  const { logged } = useContext(Usercontext);
  const { setlogged } = useContext(Usercontext);
- const { values, setdata, home } = useContext(Usercontext);
+ const { values, setdata, home, setloading, logout } = useContext(Usercontext);
 
  const logo = () => {
   if (logged && values) {
+   console.log("hi");
    if (values.user.role === "user") {
     navigate("/userdashboard");
    }
@@ -23,12 +24,17 @@ export const Header = () => {
   }
  };
 
- const handle = () => {
-  console.log("called");
-  setlogged(false);
-  logoutsApi();
+ const api = async () => {
+  setloading(true);
+  await logout();
   navigate("/");
+  setlogged(false);
+  setloading(false);
   setdata(undefined);
+ };
+
+ const handle = () => {
+  api();
  };
 
  return (
@@ -85,7 +91,7 @@ export const Header = () => {
          {!logged && !home && <Link to="/signup">Register</Link>}
          {logged && (
           <>
-           {values.user.role === "user" && (
+           {logged && values && values.user.role === "user" && (
             <Link to="/usermyorders">My orders</Link>
            )}
 

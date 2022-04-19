@@ -19,6 +19,8 @@ export const Orderdetail = () => {
  useEffect(() => {
   order();
  }, []);
+
+ console.log(datas);
  return (
   <>
    <Header />
@@ -71,21 +73,12 @@ export const Orderdetail = () => {
                 <td>{e.productname}</td>
                 <td>{e.productid}</td>
                 <td className="text-right">
-                 {e.discountvalue !== ""
-                  ? `$${Number(
-                     e.actualprice.replace("$", "") -
-                      e.actualprice.replace("$", "") *
-                       (e.discountvalue.replace("%", "") / 100)
-                    )}`
-                  : ""}
-                 {e.discountvalue !== "" ? (
-                  <del>{e.actualprice}</del>
-                 ) : (
-                  <span>{e.actualprice}</span>
-                 )}
+                 <span>{e.actualprice}</span>
                 </td>
                 <td>{e.quantity}</td>
-                <td className="text-right">{e.price}</td>
+                <td className="text-right">
+                 ${Number(e.actualprice.replace("$", "")) * e.quantity}
+                </td>
                </tr>
               );
              })}

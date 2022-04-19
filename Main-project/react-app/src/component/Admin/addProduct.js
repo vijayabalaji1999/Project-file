@@ -33,6 +33,7 @@ export const Addproduct = () => {
    if (!toast.isActive(toastid.current)) {
     toastid.current = toast.info("Please add a product image", {
      position: toast.POSITION.TOP_CENTER,
+     autoClose: 500,
     });
    }
   } else {
@@ -41,6 +42,7 @@ export const Addproduct = () => {
     if (!toast.isActive(toastid.current)) {
      toastid.current = toast.success("Product Added", {
       position: toast.POSITION.TOP_CENTER,
+      autoClose: 500,
       onClose: () => navigate("/admindashboard"),
      });
     }
@@ -48,6 +50,7 @@ export const Addproduct = () => {
     if (!toast.isActive(toastid.current)) {
      toastid.current = toast.error("SKU already exist", {
       position: toast.POSITION.TOP_CENTER,
+      autoClose: 500,
      });
     }
    }

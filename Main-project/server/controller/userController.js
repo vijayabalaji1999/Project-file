@@ -89,7 +89,7 @@ exports.addtocart = catchAsync(async (req, res, next) => {
  const addedproduct = await Product.find({ _id: product });
  const inventory = addedproduct[0].inventory;
  const productavailable = addedproduct[0].status === "available";
- const usercanby = inventory >= quantity && quantity >= 0;
+ const usercanby = inventory >= quantity && quantity >= 0 && quantity % 1 == 0;
  if (!productavailable) {
   return res.status(400).send({
    status: `Product is not available now`,

@@ -40,6 +40,7 @@ export const Signup = () => {
   if (!toast.isActive(toastid.current)) {
    toastid.current = toast.error(message, {
     position: toast.POSITION.TOP_CENTER,
+    autoClose: 500,
    });
   }
  };

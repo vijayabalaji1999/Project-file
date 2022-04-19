@@ -46,6 +46,7 @@ export const Admindashboard = () => {
    if (!toast.isActive(toastid.current)) {
     toastid.current = toast.info("Please select a product", {
      position: toast.POSITION.TOP_CENTER,
+     autoClose: 500,
     });
    }
   }
