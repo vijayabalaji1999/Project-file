@@ -25,7 +25,9 @@ export const Inventory = () => {
   const data1 = await setdiscount(values.user._id);
   const statusupdate = await status(orderid);
   const order = await orderdetail(orderid);
+
   const discount = order.orderdetails[0].discountcode;
+  console.log(order.orderdetails[0]);
   if (discount) {
    const increment1 = await increment(discount);
   }
@@ -44,6 +46,8 @@ export const Inventory = () => {
  useEffect(() => {
   removeall();
  }, []);
+
+ console.log(load);
 
  if (load) {
   return <Loading />;

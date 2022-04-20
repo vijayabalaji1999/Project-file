@@ -148,7 +148,6 @@ export const Orderdetails = () => {
                 <span>{orders.discountcode ? orders.discountcode : "-"}</span>
                 <span>
                  {orders.discountcode ? `$${orders.totaldiscount}` : "-"}
-                 {/* //shipping time to be notted */}
                 </span>
                </div>
                <div className="flex">

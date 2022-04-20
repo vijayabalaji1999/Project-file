@@ -161,6 +161,7 @@ export const Checkout = () => {
    );
   } else if (data2 && !code) {
    await decrements(product);
+
    payment(data2, product, stripe);
   }
  };
