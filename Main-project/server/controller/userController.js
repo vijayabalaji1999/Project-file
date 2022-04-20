@@ -361,8 +361,6 @@ const { MongoClient } = require("mongodb");
 
 exports.logoutuser = catchAsync(async (req, res, next) => {
  MongoClient.connect(process.env.DATABASE, function (err, client) {
-  if (err) console.log(err);
-
   var db = client.db("Main-Project");
   if (req.session && req.session.user) {
    const datas = db

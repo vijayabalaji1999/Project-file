@@ -11,7 +11,7 @@ export const Authenticateduser = ({ component: ReactComponent }) => {
  const location = useLocation();
  const { values } = useContext(Usercontext);
  const { loading } = useContext(Usercontext);
- const { setlogged } = useContext(Usercontext);
+ const { setlogged, setdata } = useContext(Usercontext);
 
  const getsession = async () => {
   const data = await getsessionApi();
@@ -31,8 +31,5 @@ export const Authenticateduser = ({ component: ReactComponent }) => {
   return <ReactComponent />;
  } else if (values && values.user.role === "admin") {
   return <Notfound />;
- } else {
-  setlogged(false);
-  return <Navigate to="/" />;
  }
 };

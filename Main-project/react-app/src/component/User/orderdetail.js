@@ -19,8 +19,6 @@ export const Orderdetail = () => {
  useEffect(() => {
   order();
  }, []);
-
- console.log(datas);
  return (
   <>
    <Header />

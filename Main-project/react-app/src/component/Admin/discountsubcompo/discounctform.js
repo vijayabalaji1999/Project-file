@@ -49,7 +49,7 @@ export const Discountform = (props) => {
         {...register("discountvalue", {
          required: true,
          pattern: {
-          value: /^[1-9][0-9]?$|^100$/,
+          value: /^[1-9]?\.?[0-9]?$|^100$/,
          },
         })}
        />

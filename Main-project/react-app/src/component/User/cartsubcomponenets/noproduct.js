@@ -5,7 +5,7 @@ export const Noproduct = (props) => {
   <div className="cart-template page-content noproduct">
    <h1>{props.message}</h1>
    <Link to={`/${props.to}`}>
-    <button className="button button--alt collect">Go to collection</button>
+    <button className="button button--alt collect">Go Back</button>
    </Link>
    <div className="top"></div>
   </div>

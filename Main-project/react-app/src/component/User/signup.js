@@ -4,8 +4,11 @@ import { Header } from "./header";
 import { toast, ToastContainer } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { logoutsApi } from "../../context/User-context/apicalls";
+import { getsessionApi } from "../../context/User-context/apicalls";
+import { useNavigate } from "react-router";
 
 export const Signup = () => {
+ const navigate = useNavigate();
  const {
   register,
   handleSubmit,
@@ -14,11 +17,31 @@ export const Signup = () => {
  const toastid = React.useRef(null);
  const { signup } = useContext(Usercontext);
  const { sethome } = useContext(Usercontext);
- const { setlogged, setdata } = useContext(Usercontext);
+ const { setlogged, setloading, setdata } = useContext(Usercontext);
+
+ const getsession = async () => {
+  setloading(true);
+  const data = await getsessionApi();
+
+  if (!data.loggedIn) {
+   setlogged(false);
+   sethome(true);
+  }
+  if (data.loggedIn) {
+   if (data.user.role === "user") {
+    setdata(data);
+    navigate("/userdashboard");
+   }
+   if (data.user.role === "admin") {
+    setdata(data);
+    navigate("/admindashboard");
+   }
+  }
+  setloading(false);
+ };
 
  useEffect(() => {
-  setlogged(false);
-  sethome(true);
+  getsession();
  }, []);
 
  const controller = async (datas) => {

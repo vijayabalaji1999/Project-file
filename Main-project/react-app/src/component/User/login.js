@@ -16,7 +16,6 @@ export const Login = () => {
  const navigate = useNavigate();
  const toastid = React.useRef(null);
  const { login, sethome } = useContext(Usercontext);
- const { values } = useContext(Usercontext);
  const { setlogged, setdata } = useContext(Usercontext);
  const [loading, setloading] = useState(true);
 
@@ -25,15 +24,16 @@ export const Login = () => {
   const data = await getsessionApi();
 
   if (!data.loggedIn) {
-   console.log("logged out");
    setlogged(false);
    sethome(false);
   }
   if (data.loggedIn) {
    if (data.user.role === "user") {
+    setdata(data);
     navigate("/userdashboard");
    }
    if (data.user.role === "admin") {
+    setdata(data);
     navigate("/admindashboard");
    }
   }

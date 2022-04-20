@@ -306,7 +306,7 @@ export const Cart = () => {
      </section>
     )}
     {noproduct && (
-     <Noproduct message={"No Product In Cart"} to={"userdashboard"} />
+     <Noproduct message={"No Products In Cart"} to={"userdashboard"} />
     )}
    </div>
   </>

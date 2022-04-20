@@ -31,7 +31,5 @@ export const Authenticatedadmin = ({ component: ReactComponent }) => {
   return <ReactComponent />;
  } else if (values && values.user.role === "user") {
   return <Notfound />;
- } else {
-  return <Navigate to="/" />;
  }
 };

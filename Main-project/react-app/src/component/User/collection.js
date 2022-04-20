@@ -12,9 +12,11 @@ export const Collection = () => {
   const allproducts = await getallproduct();
   setproducts(allproducts.allproduct);
  };
+ console.log("inside");
 
  useEffect(() => {
   getall();
+  console.log("insideuseeffect");
  }, []);
 
  return (

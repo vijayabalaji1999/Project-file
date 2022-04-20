@@ -82,6 +82,10 @@ export const Editdiscount = () => {
  }, []);
 
  const submithandle = async (data) => {
+  if (Number(data.discountvalue) < 1) {
+   error("Discount value should be greater than 1");
+   return;
+  }
   if (
    data.appliesforall === "specific" &&
    (productid.length === 0 || Object.keys(productid).length === 0)

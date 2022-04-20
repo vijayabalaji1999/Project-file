@@ -4,6 +4,7 @@ import { Welcome } from "../../component/User/welcome";
 // import { orderconfirmApi } from "../../context/User-context/discountcalculate";
 import ReactDOMServer from "react-dom/server";
 import { logoutsApi, welcome } from "./apicalls";
+import { Outlet, useLocation } from "react-router-dom";
 import {
  addtocartApi,
  deleteitemcartApi,
@@ -31,6 +32,7 @@ export const Usercontext = React.createContext({
 });
 
 export const Authcontextprovider = (props) => {
+ const location = useLocation();
  const [data, setdata] = useState();
  const [home, sethome] = useState(true);
  const [loading, setloading] = useState(true);
@@ -41,17 +43,12 @@ export const Authcontextprovider = (props) => {
  const loginDetials = async (email, password, message) => {
   const data = await loginAPI(email, password);
   if (!data.code) {
-   console.log("data.code");
    setdata(data);
    if (data.user.role === "user") {
     navigate("/userdashboard");
-    console.log("48");
-    // setlogged(true);
     setloading(false);
    } else {
     navigate("/admindashboard");
-    console.log("53");
-    // setlogged(true);
     setloading(false);
    }
   }
@@ -75,18 +72,13 @@ export const Authcontextprovider = (props) => {
   // setloading(true);
   const data = await signupAPI(email, password, passwordConfirm);
   if (!data.code) {
-   console.log("data.code");
    setdata(data);
    if (data.user.role === "user") {
     navigate("/userdashboard");
-    console.log("82");
-    // setlogged(true);
     setloading(false);
     await sendWelocme(data.user.email);
    } else {
     navigate("/admindashboard");
-    console.log("88");
-    // setlogged(true);
     setloading(false);
     await sendWelocme(data.admin.email);
    }
@@ -98,8 +90,6 @@ export const Authcontextprovider = (props) => {
  const getallproduct = async () => {
   const data = await collectionApi();
   if (!data.code) {
-   console.log("101");
-   //    setlogged(true);
   }
 
   if (data) return data;
@@ -115,7 +105,6 @@ export const Authcontextprovider = (props) => {
    setloading(false);
   }
   if (data.loggedIn) {
-   console.log("data.loggedIn");
    setdata(data);
    setloading(false);
   }
@@ -129,43 +118,29 @@ export const Authcontextprovider = (props) => {
   // setloading(true);
   const data = await getproductdetailApi(id);
   if (!data.code) {
-   console.log("133");
-   //    setlogged(true);
   }
   // setloading(false);
   if (data) return data;
  };
 
  const addtocart = async (userid, productid, quantity, role) => {
-  // setloading(true);
   const data = await addtocartApi(userid, productid, quantity, role);
   if (!data.code) {
-   //    setlogged(true);
-   console.log("145");
   }
-  // setloading(false);
   if (data) return data;
  };
 
  const getallcart = async (userid) => {
-  // setloading(true);
   const data = await getcartApi(userid);
   if (!data.code) {
-   console.log("155");
-   //    setlogged(true);
   }
-  // setloading(false);
   if (data) return data;
  };
 
  const deleteitemcart = async (userid, productid) => {
-  // setloading(true);
   const data = await deleteitemcartApi(userid, productid);
   if (!data.code) {
-   console.log("166");
-   //    setlogged(true);
   }
-  // setloading(false);
   if (data) return data;
  };
 

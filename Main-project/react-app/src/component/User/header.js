@@ -8,9 +8,11 @@ export const Header = () => {
  const navigate = useNavigate();
  const { logged } = useContext(Usercontext);
  const { setlogged } = useContext(Usercontext);
- const { values, setdata, home, setloading, logout } = useContext(Usercontext);
+ const { values, home, setloading, logout } = useContext(Usercontext);
 
  const logo = () => {
+  console.log(logged);
+  console.log(values);
   if (logged && values) {
    if (values.user.role === "user") {
     navigate("/userdashboard");

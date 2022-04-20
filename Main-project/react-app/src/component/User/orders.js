@@ -20,7 +20,6 @@ export const Myorders = () => {
  const allorder = async () => {
   const orders = await allorders(values.user._id);
   setorder(orders.allorders);
-  console.log(orders.allorders.length === 0);
   if (orders.allorders.length === 0) {
    setnoproduct(true);
   }
@@ -34,59 +33,61 @@ export const Myorders = () => {
   <>
    <Header />
    {noproduct && <Noproduct message={"No Orders"} to={"userdashboard"} />}
-   <div className="main-content">
-    <section>
-     {Object.keys(order).length === 0 && !noproduct && <Loading />}
-     {Object.keys(order).length !== 0 && !noproduct && (
-      <div className="container">
-       <div className="checkout-template page-content">
-        <h2>My Orders</h2>
-        <div className="my-orders row">
-         <div className="orders-wrap">
-          <div className="orders-list">
-           <table>
-            <thead>
-             <tr>
-              <th>S. No</th>
-              <th>Order No.</th>
-              <th>Date</th>
-              <th>Payment Status</th>
-              <th>Fulfillment Status</th>
-              <th className="text-right">Total</th>
-             </tr>
-            </thead>
-            <tbody>
-             {order.map((e, i) => {
-              return (
-               <tr key={btoa(e.orderno)}>
-                <td>{i + 1}</td>
-                <td>
-                 <Link to={`/userorderdetail/${e.orderno}`}>
-                  <u>#{e.orderno}</u>
-                 </Link>
-                </td>
-                <td>{dateformat(e.createdat)}</td>
-                <td>{e.paymentstatus}</td>
-                <td>UnFulfilled</td>
-                <td className="text-right">
-                 $
-                 {e.discountcode !== ""
-                  ? Number(e.totalprice) - e.totaldiscount
-                  : e.totalprice}
-                </td>
-               </tr>
-              );
-             })}
-            </tbody>
-           </table>
+   {!noproduct && (
+    <div className="main-content">
+     <section>
+      {Object.keys(order).length === 0 && !noproduct && <Loading />}
+      {Object.keys(order).length !== 0 && !noproduct && (
+       <div className="container">
+        <div className="checkout-template page-content">
+         <h2>My Orders</h2>
+         <div className="my-orders row">
+          <div className="orders-wrap">
+           <div className="orders-list">
+            <table>
+             <thead>
+              <tr>
+               <th>S. No</th>
+               <th>Order No.</th>
+               <th>Date</th>
+               <th>Payment Status</th>
+               <th>Fulfillment Status</th>
+               <th className="text-right">Total</th>
+              </tr>
+             </thead>
+             <tbody>
+              {order.map((e, i) => {
+               return (
+                <tr key={btoa(e.orderno)}>
+                 <td>{i + 1}</td>
+                 <td>
+                  <Link to={`/userorderdetail/${e.orderno}`}>
+                   <u>#{e.orderno}</u>
+                  </Link>
+                 </td>
+                 <td>{dateformat(e.createdat)}</td>
+                 <td>{e.paymentstatus}</td>
+                 <td>UnFulfilled</td>
+                 <td className="text-right">
+                  $
+                  {e.discountcode !== ""
+                   ? Number(e.totalprice) - e.totaldiscount
+                   : e.totalprice}
+                 </td>
+                </tr>
+               );
+              })}
+             </tbody>
+            </table>
+           </div>
           </div>
          </div>
         </div>
        </div>
-      </div>
-     )}
-    </section>
-   </div>
+      )}
+     </section>
+    </div>
+   )}
   </>
  );
 };
