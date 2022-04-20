@@ -100,7 +100,9 @@ table {
  min-width: 150px;
  right: -10px;
  box-shadow: 0px 1px 3px #aaa;
+ margin-top: 21px;
 }
+
 .head-link a {
  display: block;
  padding: 10px 20px;
@@ -108,11 +110,13 @@ table {
  text-align: right;
  border-bottom: #ddd 1px solid;
 }
+
 .header-items span {
  padding-left: 15px;
 }
 .sign-in {
  position: relative;
+ cursor: pointer;
 }
 .sign-in:hover .head-link {
  display: block;

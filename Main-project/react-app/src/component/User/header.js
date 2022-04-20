@@ -11,8 +11,6 @@ export const Header = () => {
  const { values, home, setloading, logout } = useContext(Usercontext);
 
  const logo = () => {
-  console.log(logged);
-  console.log(values);
   if (logged && values) {
    if (values.user.role === "user") {
     navigate("/userdashboard");
@@ -81,7 +79,7 @@ export const Header = () => {
           <path d="M9,7.5 C10.704,7.5 12.086,6.157 12.086,4.5 C12.086,2.843 10.704,1.5 9,1.5 C7.296,1.5 5.914,2.843 5.914,4.5 C5.914,6.157 7.296,7.5 9,7.5 Z M9,9 C6.444,9 4.371,6.985 4.371,4.5 C4.371,2.015 6.444,0 9,0 C11.556,0 13.629,2.015 13.629,4.5 C13.629,6.985 11.556,9 9,9 Z M1.543,18 L0,18 L0,15 C0,12.377 2.187,10.25 4.886,10.25 L14.143,10.25 C16.273,10.25 18,11.929 18,14 L18,18 L16.457,18 L16.457,14 C16.457,12.757 15.421,11.75 14.143,11.75 L4.886,11.75 C3.04,11.75 1.543,13.205 1.543,15 L1.543,18 Z"></path>
          </g>
         </svg>
-        <div className="head-link bg-white">
+        <div className="head-link bg-white hovers">
          {!logged && home && (
           <Link to="/" className="main-menu-link">
            Login
