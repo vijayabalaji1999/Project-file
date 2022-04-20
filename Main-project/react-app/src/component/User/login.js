@@ -41,8 +41,6 @@ export const Login = () => {
  };
  useEffect(() => {
   getsession();
-
-  //
  }, []);
 
  const controller = async (datas) => {

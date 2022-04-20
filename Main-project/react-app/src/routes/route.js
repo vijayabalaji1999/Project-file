@@ -13,7 +13,6 @@ import { Orderdetails } from "../component/Admin/orderdetail";
 import { Myorders } from "../component/User/orders";
 import { Welcome } from "../component/User/welcome";
 import { Inventory } from "../component/User/inventory";
-import { FieldArray } from "../component/User/check";
 import { Authenticatedadmin } from "../context/Admin-context/Authenticated-admin";
 import { Addproduct } from "../component/Admin/addProduct";
 import { Admindashboard } from "../component/Admin/adminDashboard";

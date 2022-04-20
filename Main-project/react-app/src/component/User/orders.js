@@ -4,8 +4,10 @@ import { allorders } from "../../context/User-context/apicalls";
 import { Link } from "react-router-dom";
 import { Header } from "./header";
 import { Loading } from "./loading";
+import { Noproduct } from "./cartsubcomponenets/noproduct";
 
 export const Myorders = () => {
+ const [noproduct, setnoproduct] = useState(false);
  const { values } = useContext(Usercontext);
  const [order, setorder] = useState({});
 
@@ -18,6 +20,10 @@ export const Myorders = () => {
  const allorder = async () => {
   const orders = await allorders(values.user._id);
   setorder(orders.allorders);
+  console.log(orders.allorders.length === 0);
+  if (orders.allorders.length === 0) {
+   setnoproduct(true);
+  }
  };
 
  useEffect(() => {
@@ -27,10 +33,11 @@ export const Myorders = () => {
  return (
   <>
    <Header />
+   {noproduct && <Noproduct message={"No Orders"} to={"userdashboard"} />}
    <div className="main-content">
     <section>
-     {Object.keys(order).length === 0 && <Loading />}
-     {Object.keys(order).length !== 0 && (
+     {Object.keys(order).length === 0 && !noproduct && <Loading />}
+     {Object.keys(order).length !== 0 && !noproduct && (
       <div className="container">
        <div className="checkout-template page-content">
         <h2>My Orders</h2>

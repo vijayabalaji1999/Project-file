@@ -4,11 +4,16 @@ import React, { useEffect, useState } from "react";
 import { getallOrdersadmin } from "../../context/Admin-context/apicallsadmin";
 import { Link } from "react-router-dom";
 import { Loading } from "../User/loading";
+import { Noproduct } from "../User/cartsubcomponenets/noproduct";
 
 export const Orders = () => {
+ const [noproduct, setnoproduct] = useState(false);
  const [orders, setorders] = useState({});
  const allorders = async () => {
   const products = await getallOrdersadmin();
+  if (products.length === 0) {
+   setnoproduct(true);
+  }
   setorders(products);
  };
 
@@ -24,8 +29,9 @@ export const Orders = () => {
  return (
   <>
    <Header />
-   {Object.keys(orders).length === 0 && <Loading />}
-   {Object.keys(orders).length !== 0 && (
+   {noproduct && <Noproduct message={"No Orders"} to={"admindashboard"} />}
+   {Object.keys(orders).length === 0 && !noproduct && <Loading />}
+   {Object.keys(orders).length !== 0 && !noproduct && (
     <div className="main-content">
      <section className="flex">
       <div className="container-fluid">

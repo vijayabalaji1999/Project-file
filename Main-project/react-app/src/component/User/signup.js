@@ -12,7 +12,6 @@ export const Signup = () => {
   formState: { errors },
  } = useForm();
  const toastid = React.useRef(null);
-
  const { signup } = useContext(Usercontext);
  const { sethome } = useContext(Usercontext);
  const { setlogged, setdata } = useContext(Usercontext);
@@ -20,8 +19,6 @@ export const Signup = () => {
  useEffect(() => {
   setlogged(false);
   sethome(true);
-  //   logoutsApi();
-  //   setdata(undefined);
  }, []);
 
  const controller = async (datas) => {
@@ -40,7 +37,6 @@ export const Signup = () => {
   if (!toast.isActive(toastid.current)) {
    toastid.current = toast.error(message, {
     position: toast.POSITION.TOP_CENTER,
-    autoClose: 500,
    });
   }
  };

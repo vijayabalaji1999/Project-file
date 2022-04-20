@@ -12,7 +12,6 @@ export const Header = () => {
 
  const logo = () => {
   if (logged && values) {
-   console.log("hi");
    if (values.user.role === "user") {
     navigate("/userdashboard");
    }
@@ -30,7 +29,6 @@ export const Header = () => {
   navigate("/");
   setlogged(false);
   setloading(false);
-  setdata(undefined);
  };
 
  const handle = () => {

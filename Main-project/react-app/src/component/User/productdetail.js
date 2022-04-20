@@ -117,6 +117,11 @@ export const Productdetail = () => {
              ) : (
               ""
              )}
+             <div className="error2">
+              {products.inventory > 0 && products.inventory <= 5
+               ? `Hurry only ${products.inventory} Left`
+               : ""}
+             </div>
              <div className="product-add">
               {products.inventory > 0 ? (
                <button

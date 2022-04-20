@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-export const Noproduct = () => {
+export const Noproduct = (props) => {
  return (
   <div className="cart-template page-content noproduct">
-   <h1>NO PRODUCT AVAILABLE</h1>
-   <Link to="/userdashboard">
+   <h1>{props.message}</h1>
+   <Link to={`/${props.to}`}>
     <button className="button button--alt collect">Go to collection</button>
    </Link>
    <div className="top"></div>

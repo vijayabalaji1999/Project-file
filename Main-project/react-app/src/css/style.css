@@ -1679,6 +1679,12 @@ input[type="number"] {
  margin-top: 4px;
  font-size: 12px;
 }
+.error2 {
+ color: red;
+ margin-top: 4px;
+ font-size: 20px;
+ margin-top: 2rem;
+}
 .text-rightgst1 {
  margin-left: 19.5rem;
 }

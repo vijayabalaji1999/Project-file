@@ -45,11 +45,13 @@ export const Authcontextprovider = (props) => {
    setdata(data);
    if (data.user.role === "user") {
     navigate("/userdashboard");
-    setlogged(true);
+    console.log("48");
+    // setlogged(true);
     setloading(false);
    } else {
     navigate("/admindashboard");
-    setlogged(true);
+    console.log("53");
+    // setlogged(true);
     setloading(false);
    }
   }
@@ -77,12 +79,14 @@ export const Authcontextprovider = (props) => {
    setdata(data);
    if (data.user.role === "user") {
     navigate("/userdashboard");
-    setlogged(true);
+    console.log("82");
+    // setlogged(true);
     setloading(false);
     await sendWelocme(data.user.email);
    } else {
     navigate("/admindashboard");
-    setlogged(true);
+    console.log("88");
+    // setlogged(true);
     setloading(false);
     await sendWelocme(data.admin.email);
    }
@@ -94,7 +98,8 @@ export const Authcontextprovider = (props) => {
  const getallproduct = async () => {
   const data = await collectionApi();
   if (!data.code) {
-   setlogged(true);
+   console.log("101");
+   //    setlogged(true);
   }
 
   if (data) return data;
@@ -124,7 +129,8 @@ export const Authcontextprovider = (props) => {
   // setloading(true);
   const data = await getproductdetailApi(id);
   if (!data.code) {
-   setlogged(true);
+   console.log("133");
+   //    setlogged(true);
   }
   // setloading(false);
   if (data) return data;
@@ -134,7 +140,8 @@ export const Authcontextprovider = (props) => {
   // setloading(true);
   const data = await addtocartApi(userid, productid, quantity, role);
   if (!data.code) {
-   setlogged(true);
+   //    setlogged(true);
+   console.log("145");
   }
   // setloading(false);
   if (data) return data;
@@ -144,7 +151,8 @@ export const Authcontextprovider = (props) => {
   // setloading(true);
   const data = await getcartApi(userid);
   if (!data.code) {
-   setlogged(true);
+   console.log("155");
+   //    setlogged(true);
   }
   // setloading(false);
   if (data) return data;
@@ -154,7 +162,8 @@ export const Authcontextprovider = (props) => {
   // setloading(true);
   const data = await deleteitemcartApi(userid, productid);
   if (!data.code) {
-   setlogged(true);
+   console.log("166");
+   //    setlogged(true);
   }
   // setloading(false);
   if (data) return data;
