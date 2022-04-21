@@ -49,7 +49,7 @@ export const Login = () => {
    if (!toast.isActive(toastid.current)) {
     toastid.current = toast.error(data.status, {
      position: toast.POSITION.TOP_CENTER,
-     autoClose: 500,
+     autoClose: 1000,
     });
    }
   }

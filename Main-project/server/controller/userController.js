@@ -186,13 +186,13 @@ exports.addtocart = catchAsync(async (req, res, next) => {
    });
   } else if (!usercanby || hasbutnotvalid || quantity === 0) {
    return res.status(400).send({
-    status: `Cannot buy this quantity please try another quantity`,
+    status: `Invalid Quantity`,
     code: 401,
    });
   }
  } else if (!usercanby || quantity === 0) {
   return res.status(400).send({
-   status: `Cannot buy this quantity please try another quantity`,
+   status: `Only ${inventory} Products available`,
    code: 401,
   });
  }

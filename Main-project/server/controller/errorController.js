@@ -7,7 +7,7 @@ const handleCastErrorDB = (err, res) => {
 
 const handleDuplicateFieldsDB = (err, res) => {
  return res.status(401).send({
-  status: `Emailid already Exist`,
+  status: `Email-id already Exist`,
   code: 401,
  });
 };

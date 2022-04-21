@@ -52,7 +52,7 @@ export const handleChangehelp = (qua, id, cart) => {
 export const checkouthandlercheck = async (products, userid) => {
  let code;
  let product = [];
- let status;
+ let status = [];
  const data = await Promise.all(
   products.map(async (e) => {
    const contents = await addtocartApi(
@@ -64,18 +64,21 @@ export const checkouthandlercheck = async (products, userid) => {
    if (contents.code) {
     code = contents.code;
     product.push(e.productid._id);
-    status = e.productid.name;
+    status.push(e.productid.name);
    }
   })
  );
+
  if (code) {
   if (toastList.size < MAX_TOAST) {
    const id = toast.error(
-    `Can't buy this ${status} in this quantity please try another quantity`,
+    status.length === 1
+     ? `${status[0]} Product is not-available`
+     : "Some Products are not available right now",
     {
      position: toast.POSITION.TOP_CENTER,
      onClose: () => toastList.delete(id),
-     autoClose: 500,
+     autoClose: 1000,
     }
    );
    toastList.add(id);

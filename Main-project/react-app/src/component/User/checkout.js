@@ -36,7 +36,7 @@ export const Checkout = () => {
  const stripe = useStripe();
  let { orderid } = useParams();
 
- let status;
+ let status = [];
  let code;
 
  const checkouthandler = async (data1 = null) => {
@@ -50,14 +50,16 @@ export const Checkout = () => {
     contents = await addtocart(userid, e.productid._id, e.quantity);
     if (contents.code) {
      code = contents.code;
-     status = e.productid.name;
+     status.push(e.productid.name);
      product.push(e.productid._id);
     }
    })
   );
   if (code) {
    error(
-    `Can't buy this ${status} in this quantity please try another quantity`
+    status.length === 1
+     ? `${status[0]} Product is not-available`
+     : "Some Products are not available right now"
    );
   }
   const run = await maindata(data1);
@@ -75,7 +77,7 @@ export const Checkout = () => {
    if (!toast.isActive(toastid.current)) {
     toastid.current = toast.error("No Products in Cart", {
      position: toast.POSITION.TOP_CENTER,
-     autoClose: 500,
+     autoClose: 1000,
      onClose: () => navigate("/usercart"),
     });
    }
@@ -157,7 +159,9 @@ export const Checkout = () => {
 
   if (code) {
    error(
-    `Can't buy this ${status} in this quantity please try another quantity`
+    status.length === 1
+     ? `${status[0]} Product is notavailable`
+     : "Some Products are not available right now"
    );
   } else if (data2 && !code) {
    await decrements(product);
@@ -170,7 +174,7 @@ export const Checkout = () => {
   if (!toast.isActive(toastid.current)) {
    toastid.current = toast.error(message, {
     position: toast.POSITION.TOP_CENTER,
-    autoClose: 500,
+    autoClose: 1000,
    });
   }
  };

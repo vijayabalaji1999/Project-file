@@ -49,7 +49,7 @@ export const Signup = () => {
 
   if (data) {
    if (data.status === "Invalid input data.") {
-    error("Password and Confirm password are not same");
+    error("Password do not match");
    } else {
     error(data.status);
    }
@@ -60,6 +60,7 @@ export const Signup = () => {
   if (!toast.isActive(toastid.current)) {
    toastid.current = toast.error(message, {
     position: toast.POSITION.TOP_CENTER,
+    autoClose: 1000,
    });
   }
  };

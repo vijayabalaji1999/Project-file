@@ -35,7 +35,7 @@ export const Editdiscount = () => {
    if (!toast.isActive(toastid.current)) {
     toastid.current = toast.error("Discount is unavailable", {
      position: toast.POSITION.TOP_CENTER,
-     autoClose: 500,
+     autoClose: 1000,
      onClose: () => navigate("/admindiscount"),
     });
    }
@@ -125,7 +125,7 @@ export const Editdiscount = () => {
   if (!toast.isActive(toastid.current)) {
    toastid.current = toast.error(message, {
     position: toast.POSITION.TOP_CENTER,
-    autoClose: 500,
+    autoClose: 1000,
    });
   }
  };

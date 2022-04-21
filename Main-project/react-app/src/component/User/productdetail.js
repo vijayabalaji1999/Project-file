@@ -26,7 +26,7 @@ export const Productdetail = () => {
    if (!toast.isActive(toastid.current)) {
     toastid.current = toast.error("Product is unavailable", {
      position: toast.POSITION.TOP_CENTER,
-     autoClose: 500,
+     autoClose: 1000,
      onClose: () => navigate("/userdashboard"),
     });
    }
@@ -48,7 +48,7 @@ export const Productdetail = () => {
    if (!toast.isActive(toastid.current)) {
     toastid.current = toast.error(data.status, {
      position: toast.POSITION.TOP_CENTER,
-     autoClose: 500,
+     autoClose: 1000,
     });
    }
   } else if (data) {

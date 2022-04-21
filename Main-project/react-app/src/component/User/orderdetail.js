@@ -97,7 +97,11 @@ export const Orderdetail = () => {
               <td colSpan="4">
                Discount{" "}
                <span>
-                (<strong>{datas && datas.discountcode}</strong>)
+                <strong>
+                 {datas &&
+                  datas.discountcode !== "" &&
+                  `(${datas.discountcode})`}
+                </strong>
                </span>
               </td>
               <td className="text-right">

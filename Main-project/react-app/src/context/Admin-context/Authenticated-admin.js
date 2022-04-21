@@ -15,7 +15,7 @@ export const Authenticatedadmin = ({ component: ReactComponent }) => {
 
  const getsession = async () => {
   const data = await getsessionApi();
-  if (data.loggedIn === false) {
+  if (data.loggedIn === false || data.user.role === "user") {
    navigate("/");
   }
  };

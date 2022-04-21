@@ -51,7 +51,7 @@ export const Addproduct = () => {
     if (!toast.isActive(toastid.current)) {
      toastid.current = toast.error("SKU already exist", {
       position: toast.POSITION.TOP_CENTER,
-      autoClose: 500,
+      autoClose: 1000,
      });
     }
    }
