@@ -2,19 +2,11 @@ import { Link } from "react-router-dom";
 import { getalldiscountadmin } from "../../context/Admin-context/apicallsadmin";
 import { useState, useEffect } from "react";
 import { Header } from "../User/header";
-import { useNavigate } from "react-router";
-import { toast, ToastContainer } from "react-toastify";
 import React from "react";
 import { Loading } from "../User/loading";
 
 export const Discount = () => {
- const toastid = React.useRef(null);
  const [discount, setdiscount] = useState({});
- const [languages, setLanguages] = useState();
- const [check, setcheck] = useState(false);
- const [code, setcode] = useState();
- const navigate = useNavigate();
- const [num, setnum] = useState(false);
 
  const alldisocunts = async () => {
   const discounts = await getalldiscountadmin();
@@ -37,33 +29,6 @@ export const Discount = () => {
   }
  };
 
- const handleCheckboxChecked = (event, code, i) => {
-  if (languages !== i) {
-   setLanguages(i);
-   setcheck(true);
-   setcode(code);
-   setnum(true);
-  } else if (languages === i) {
-   setLanguages(undefined);
-   setcheck(false);
-   setnum(false);
-   setcode(undefined);
-  }
- };
-
- const editdiscount = () => {
-  if (code) {
-   navigate(`/admindiscountedit/${code}`);
-  } else {
-   if (!toast.isActive(toastid.current)) {
-    toastid.current = toast.info("Please select a Discount", {
-     position: toast.POSITION.TOP_CENTER,
-     autoClose: 500,
-    });
-   }
-  }
- };
-
  useEffect(() => {
   alldisocunts();
  }, []);
@@ -71,7 +36,6 @@ export const Discount = () => {
  return (
   <>
    <Header />
-   <ToastContainer />
    {Object.keys(discount).length === 0 && <Loading />}
    {Object.keys(discount).length !== 0 && (
     <div className="main-content">
@@ -105,19 +69,11 @@ export const Discount = () => {
             Create Discount
            </Link>
           </div>
-          <div className="actions flex items-center flex-start">
-           <span>
-            <span id="count">{num ? 1 : 0}</span> selected
-           </span>
-           <button onClick={editdiscount} className="white-btn items-center">
-            Edit Discount
-           </button>
-          </div>
           <div className="added-products">
            <table className="table">
             <thead>
              <tr>
-              <th>Select</th>
+              <th>S. No</th>
               <th>Discount Code</th>
               <th>Times Used</th>
               <th>Start Date</th>
@@ -133,13 +89,8 @@ export const Discount = () => {
                 key={e.discountcode}
                >
                 <td>
-                 <input
-                  type="checkbox"
-                  // checked
-                  name="discount-item"
-                  onChange={(event) => handleCheckboxChecked(event, e._id, i)}
-                  checked={check && languages === i ? true : false}
-                 />
+                 {i < 9 && "0"}
+                 {i + 1}
                 </td>
                 <td>
                  <Link to={`/admindiscountedit/${e._id}`}>

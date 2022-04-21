@@ -8,7 +8,7 @@ export const Header = () => {
  const navigate = useNavigate();
  const { logged } = useContext(Usercontext);
  const { setlogged } = useContext(Usercontext);
- const { values, home, setloading, logout } = useContext(Usercontext);
+ const { values, home, setloading, setdata } = useContext(Usercontext);
 
  const logo = () => {
   if (logged && values) {
@@ -25,7 +25,8 @@ export const Header = () => {
 
  const api = async () => {
   setloading(true);
-  await logout();
+  await logoutsApi();
+  setdata(undefined);
   navigate("/");
   setlogged(false);
   setloading(false);

@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { getallproductadmin } from "../../context/Admin-context/apicallsadmin";
-import { getoneproductsku } from "../../context/Admin-context/apicallsadmin";
 import { adddiscountadmin } from "../../context/Admin-context/apicallsadmin";
 import { Header } from "../User/header";
 import { toast, ToastContainer } from "react-toastify";

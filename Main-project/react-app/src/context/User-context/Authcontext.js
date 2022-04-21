@@ -56,11 +56,6 @@ export const Authcontextprovider = (props) => {
   if (data.code) return data;
  };
 
- const logout = async () => {
-  await logoutsApi();
-  setdata(undefined);
- };
-
  const sendWelocme = async (email) => {
   const messageHtml = ReactDOMServer.renderToString(
    <Welcome name={email}></Welcome>
@@ -162,7 +157,6 @@ export const Authcontextprovider = (props) => {
     sethome: sethome,
     home: home,
     setloading: setloading,
-    logout: logout,
    }}
   >
    {props.children}
