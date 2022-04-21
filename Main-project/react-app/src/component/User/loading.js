@@ -5,10 +5,11 @@ export const Loading = () => {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
+  zIndex: 1,
  };
  return (
   <div style={style}>
-   <RotatingLines strokeColor={"#123abc"} />
+   <RotatingLines strokeColor={"black"} />
   </div>
  );
 };

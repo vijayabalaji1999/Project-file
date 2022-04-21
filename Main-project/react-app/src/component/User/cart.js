@@ -149,6 +149,7 @@ export const Cart = () => {
   if (Object.keys(updates).length !== 0) {
    setupdates(updates.filter((e) => e.productid._id !== productid));
   }
+
   getcart(userid);
  };
 
@@ -179,6 +180,7 @@ export const Cart = () => {
   <>
    <Header />
    <ToastContainer />
+
    <div className="main-content">
     {Object.keys(cart).length === 0 && !noproduct && <Loading />}
     {Object.keys(cart).length !== 0 && !noproduct && (

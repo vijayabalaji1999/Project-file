@@ -93,21 +93,23 @@ export const Orderdetail = () => {
               <td colSpan="4">Tax (GST)</td>
               <td className="text-right">$0</td>
              </tr>
-             <tr>
-              <td colSpan="4">
-               Discount{" "}
-               <span>
-                <strong>
-                 {datas &&
-                  datas.discountcode !== "" &&
-                  `(${datas.discountcode})`}
-                </strong>
-               </span>
-              </td>
-              <td className="text-right">
-               {datas.totaldiscount ? `-$${datas.totaldiscount}` : "--"}
-              </td>
-             </tr>
+             {datas && datas.discountcode && (
+              <tr>
+               <td colSpan="4">
+                Discount{" "}
+                <span>
+                 <strong>
+                  {datas &&
+                   datas.discountcode !== "" &&
+                   `(${datas.discountcode})`}
+                 </strong>
+                </span>
+               </td>
+               <td className="text-right">
+                {datas.totaldiscount ? `-$${datas.totaldiscount}` : "--"}
+               </td>
+              </tr>
+             )}
              <tr>
               <td colSpan="4">
                <strong>Total</strong>

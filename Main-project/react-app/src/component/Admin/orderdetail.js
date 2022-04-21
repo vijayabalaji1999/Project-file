@@ -143,13 +143,15 @@ export const Orderdetails = () => {
                 <span>GST 0%</span>
                 <span>$0</span>
                </div>
-               <div className="flex">
-                <span>Discount</span>
-                <span>{orders.discountcode ? orders.discountcode : "-"}</span>
-                <span>
-                 {orders.discountcode ? `$${orders.totaldiscount}` : "-"}
-                </span>
-               </div>
+               {orders.discountcode && (
+                <div className="flex">
+                 <span>Discount</span>
+                 <span>{orders.discountcode ? orders.discountcode : "-"}</span>
+                 <span>
+                  {orders.discountcode ? `$${orders.totaldiscount}` : "-"}
+                 </span>
+                </div>
+               )}
                <div className="flex">
                 <span>
                  <strong>Total</strong>
