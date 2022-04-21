@@ -69,7 +69,6 @@ export const Checkout = () => {
   if (orderid !== "0000") {
    setstate(true);
   }
-
   const allcart = await getallcart(userid);
   const discount = allcart.cartdetail[0].discount;
   if (allcart.productadded.length === 0) {

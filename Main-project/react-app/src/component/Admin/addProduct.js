@@ -20,6 +20,10 @@ export const Addproduct = () => {
  } = useForm();
 
  const uploadFileHandler = async (e) => {
+  if (!e.target.files[0].type.startsWith("image")) {
+   error("Please Upload a Valid Image");
+   return;
+  }
   const file = e.target.files[0];
   const added = await getimages(file);
   setimage(added);
@@ -48,13 +52,17 @@ export const Addproduct = () => {
      });
     }
    } else {
-    if (!toast.isActive(toastid.current)) {
-     toastid.current = toast.error("SKU already exist", {
-      position: toast.POSITION.TOP_CENTER,
-      autoClose: 1000,
-     });
-    }
+    error("SKU already exist");
    }
+  }
+ };
+
+ const error = (message) => {
+  if (!toast.isActive(toastid.current)) {
+   toastid.current = toast.error(message, {
+    position: toast.POSITION.TOP_CENTER,
+    autoClose: 1000,
+   });
   }
  };
 

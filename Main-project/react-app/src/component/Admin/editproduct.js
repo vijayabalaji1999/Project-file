@@ -1,16 +1,14 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { getoneproductadmin } from "../../context/Admin-context/apicallsadmin";
-import { useForm } from "react-hook-form";
 import { getimages } from "../../context/Admin-context/apicallsadmin";
 import { Header } from "../User/header";
-import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { productupdate } from "../../context/Admin-context/apicallsadmin";
 import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 import { useNavigate } from "react-router";
-import { Productedit } from "./productsubcomponent/producteditform";
+import { Productform } from "./productsubcomponent/productform";
 
 export const Editproduct = () => {
  const navigate = useNavigate();
@@ -40,8 +38,13 @@ export const Editproduct = () => {
  }, []);
 
  const uploadFileHandler = async (e) => {
+  if (!e.target.files[0].type.startsWith("image")) {
+   error("Please Upload a Valid Image");
+   return;
+  }
   const file = e.target.files[0];
   const added = await getimages(file);
+  console.log(added);
   setimage(added);
  };
  const submithandle = async (data) => {
@@ -70,12 +73,16 @@ export const Editproduct = () => {
     });
    }
   } else {
-   if (!toast.isActive(toastid.current)) {
-    toastid.current = toast.error("SKU already exist", {
-     position: toast.POSITION.TOP_CENTER,
-     autoClose: 1000,
-    });
-   }
+   error("SKU already exist");
+  }
+ };
+
+ const error = (message) => {
+  if (!toast.isActive(toastid.current)) {
+   toastid.current = toast.error(message, {
+    position: toast.POSITION.TOP_CENTER,
+    autoClose: 1000,
+   });
   }
  };
 
@@ -84,7 +91,7 @@ export const Editproduct = () => {
    <Header />
    <ToastContainer />
    {Object.keys(product).length !== 0 && (
-    <Productedit
+    <Productform
      image={image}
      uploadFileHandler={uploadFileHandler}
      setimage={setimage}

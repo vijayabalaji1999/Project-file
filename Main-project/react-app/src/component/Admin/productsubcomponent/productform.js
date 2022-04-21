@@ -1,12 +1,22 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useState, useEffect } from "react";
 
 export const Productform = (props) => {
  const {
   register,
   handleSubmit,
   formState: { errors },
+  reset,
  } = useForm();
+
+ useEffect(() => {
+  if (Object.keys(props.product).length !== 0) {
+   props.product.price = Number(props.product.price.replace("$", ""));
+   reset(props.product);
+  }
+ }, []);
+
  return (
   <div className="main-content">
    <section className="flex">
@@ -30,13 +40,17 @@ export const Productform = (props) => {
       <div className="admin-right page-content">
        <div className="products-list">
         <div className="actions flex items-center">
-         <h3>Add Product</h3>
+         <h3>
+          {Object.keys(props.product).length === 0
+           ? "Add Product"
+           : props.product.name}
+         </h3>
          <button
           type="submit"
           form="updateform"
           className="button button--hollow justify-end inline-block"
          >
-          Save
+          {Object.keys(props.product).length === 0 ? "SAVE" : "UPDATE"}
          </button>
         </div>
         <div className="edit-product">
@@ -139,7 +153,7 @@ export const Productform = (props) => {
              className="button button--hollow justify-end inline-block"
              form="updateform"
             >
-             Save
+             {Object.keys(props.product).length === 0 ? "SAVE" : "UPDATE"}
             </button>
            </form>
           </div>

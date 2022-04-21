@@ -11,7 +11,6 @@ export const stripePromise = loadStripe(
 );
 
 function App() {
- useEffect(() => {}, []);
  return (
   <BrowserRouter>
    <Authcontextprovider>
