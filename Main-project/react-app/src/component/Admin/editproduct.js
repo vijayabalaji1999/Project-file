@@ -44,7 +44,6 @@ export const Editproduct = () => {
   }
   const file = e.target.files[0];
   const added = await getimages(file);
-  console.log(added);
   setimage(added);
  };
  const submithandle = async (data) => {
