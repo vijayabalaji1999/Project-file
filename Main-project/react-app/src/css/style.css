@@ -124,6 +124,7 @@ table {
 .footer {
  padding: 20px 0;
  margin-top: 20px;
+ height: auto;
 }
 .form-container h1 {
  margin-bottom: 20px;

@@ -57,7 +57,7 @@ export const Cart = () => {
     setcoupon(true);
    } else if (data.error) {
     setcoupon(false);
-    error(data.error);
+    error("Coupon Expired/Invalid");
    }
    setcart(data);
   }

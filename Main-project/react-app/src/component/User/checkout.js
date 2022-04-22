@@ -4,7 +4,6 @@ import { Usercontext } from "../../context/User-context/Authcontext";
 import { discountcal } from "../../utils/discountcalculate";
 import { order } from "../../context/User-context/apicalls";
 import { nodiscount } from "../../helpers/helper";
-import { useForm } from "react-hook-form";
 import { Link, useParams } from "react-router-dom";
 import { useStripe } from "@stripe/react-stripe-js";
 import { getdiscount } from "../../helpers/helper";
@@ -86,7 +85,7 @@ export const Checkout = () => {
   if (discount !== "") {
    const data1 = await getdiscount(allcart.cartdetail[0].discount);
    if (data1.code) {
-    error("Coupon is expired Please try another or continue with this amount");
+    error("Coupon Expired/Invalid");
    } else {
     setdis(data1.discount[0].discountvalue);
    }
@@ -107,10 +106,13 @@ export const Checkout = () => {
     setcart(data);
     if (data1 !== null) contact(data1, data);
    } else if (data.error) {
-    error("Coupon is expired Please try another or continue with this amount");
+    error("Coupon Expired/Invalid");
+    setcart(data);
    }
   }
  };
+
+ console.log(cart);
 
  useEffect(() => {
   checkouthandler();
