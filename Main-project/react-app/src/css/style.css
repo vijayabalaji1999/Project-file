@@ -1716,3 +1716,8 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
  -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
+
+.nodiscount {
+ margin-left: 20rem;
+ margin-top: -9.7rem;
+}

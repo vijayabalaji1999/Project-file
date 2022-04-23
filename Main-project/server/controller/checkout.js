@@ -7,7 +7,6 @@ exports.createStripeCheckoutSession = async (req, res, next) => {
 
  let line_items = req.body.lineitem;
  let order = req.body.order;
- let amount = line_items[0].amount;
 
  const session = await stripe.checkout.sessions.create({
   payment_method_types: ["card"],

@@ -64,6 +64,9 @@ export const Productform = (props) => {
               placeholder=""
               {...register("name", {
                required: true,
+               validate: (value) => {
+                return !!value.trim();
+               },
               })}
              />
              {errors.name && <p className="error1">*Please enter the name</p>}
@@ -142,6 +145,9 @@ export const Productform = (props) => {
               rows="10"
               {...register("description", {
                required: true,
+               validate: (value) => {
+                return !!value.trim();
+               },
               })}
              ></textarea>
              {errors.description && (

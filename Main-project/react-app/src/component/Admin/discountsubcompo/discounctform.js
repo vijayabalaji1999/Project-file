@@ -34,6 +34,9 @@ export const Discountform = (props) => {
         className=""
         {...register("discountcode", {
          required: true,
+         validate: (value) => {
+          return !!value.trim();
+         },
         })}
        />
        {errors.discountcode && (

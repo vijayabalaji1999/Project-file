@@ -47,6 +47,9 @@ export const Checkoutdetails = (props) => {
         pattern: {
          value: /^[A-Za-z_ ]+$/,
         },
+        validate: (value) => {
+         return !!value.trim();
+        },
        })}
       />
       {errors.name && <p className="error1">*Please enter the name</p>}
@@ -97,7 +100,12 @@ export const Checkoutdetails = (props) => {
        type="text"
        className="input-text"
        placeholder="Enter your address"
-       {...register("address", { required: true })}
+       {...register("address", {
+        required: true,
+        validate: (value) => {
+         return !!value.trim();
+        },
+       })}
       />
       {errors.address && <p className="error1">*Please enter the address</p>}
      </span>
@@ -139,6 +147,9 @@ export const Checkoutdetails = (props) => {
         required: true,
         pattern: {
          value: /^[A-Za-z_ ]+$/,
+        },
+        validate: (value) => {
+         return !!value.trim();
         },
        })}
       />
@@ -200,6 +211,9 @@ export const Checkoutdetails = (props) => {
        placeholder="Enter your address"
        {...register("shippingaddress", {
         required: true,
+        validate: (value) => {
+         return !!value.trim();
+        },
        })}
       />
       {errors.shippingaddress && (

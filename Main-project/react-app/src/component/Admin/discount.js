@@ -4,12 +4,17 @@ import { useState, useEffect } from "react";
 import { Header } from "../User/header";
 import React from "react";
 import { Loading } from "../User/loading";
+import { Noproduct } from "../User/cartsubcomponenets/noproduct";
 
 export const Discount = () => {
  const [discount, setdiscount] = useState({});
+ const [nodiscount, setnodiscount] = useState(false);
 
  const alldisocunts = async () => {
   const discounts = await getalldiscountadmin();
+  if (discounts.length === 0) {
+   setnodiscount(true);
+  }
   setdiscount(discounts);
  };
 
@@ -36,7 +41,14 @@ export const Discount = () => {
  return (
   <>
    <Header />
-   {Object.keys(discount).length === 0 && <Loading />}
+   {Object.keys(discount).length === 0 && !nodiscount && <Loading />}
+   {nodiscount && (
+    <Noproduct
+     message={"No Discount"}
+     to={"adminadddiscount"}
+     btn={"Create a Discount"}
+    />
+   )}
    {Object.keys(discount).length !== 0 && (
     <div className="main-content">
      <section className="flex">
