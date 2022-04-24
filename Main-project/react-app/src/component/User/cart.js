@@ -23,6 +23,7 @@ export const Cart = () => {
  const [coupon, setcoupon] = useState(false);
  const [noproduct, setnoproduct] = useState();
  const [updates, setupdates] = useState({});
+ const [canup, setcanup] = useState(false);
 
  const userid = values.user._id;
  const promo = useRef();
@@ -109,6 +110,7 @@ export const Cart = () => {
 
   if (data.code) {
    error(data.status);
+   setcanup(true);
   } else {
    success("Product updated");
   }
@@ -137,6 +139,7 @@ export const Cart = () => {
 
   if (code) {
    error(status);
+   setcanup(true);
   } else {
    success("Product updated");
   }
@@ -214,6 +217,8 @@ export const Cart = () => {
            handleChange={handleChange}
            singleupdate={singleupdate}
            userid={userid}
+           canup={canup}
+           setcanup={setcanup}
           />
          </div>
          <div className="cart__details cart__block">

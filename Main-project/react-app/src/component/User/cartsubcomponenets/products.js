@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
 import { FaTrashAlt } from "react-icons/fa";
+import { useEffect } from "react";
 
 export const Productcart = (props) => {
+ useEffect(() => {
+  setTimeout(() => {
+   props.setcanup(false);
+  }, 1000);
+ }, [props.canup]);
+
  return props.cart.map((e, i) => {
   return (
    <div className="line-items" key={btoa(e.productid.sku)}>
@@ -56,6 +63,7 @@ export const Productcart = (props) => {
         className="number"
         name="updates[]"
         size="4"
+        key={props.canup && e.quantity !== 0 && e.quantity}
         defaultValue={e.quantity}
         onChange={(evt) => props.handleChange(evt, e.productid._id, props.cart)}
        />
